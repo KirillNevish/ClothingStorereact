@@ -92,9 +92,11 @@
 import React, { useState, useEffect } from 'react';
 import style from './Header.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const checkLoggedIn = () => {
@@ -125,10 +127,12 @@ function Header() {
     const handleCartClick = () => {
         if (isLoggedIn) {
             // Переход на страницу корзины
-            window.location.href = '/cart';
+            // window.location.href = '/cart';
+            navigate('/cart');
         } else {
             // Переход на страницу входа
-            window.location.href = '/signin';
+            // window.location.href = '/signin';
+            navigate('/signin');
         }
     };
 
