@@ -10,25 +10,21 @@ import shirtfour from '../../MainProducts/images/upperclothing/84277740-руба
 import shirtfive from '../../MainProducts/images/upperclothing/205703589-fashionable-men-shirt-design-with-vector-icon.jpg';
 
 function UpperClothing() {
-  // Определяем массив продуктов для верхней одежды
   const upperClothingProducts = [
-    { name: 'Classic Winter Sweater', image: sweaterone, price: '$50.00' },
-    { name: 'Classic Blue T-Shirt', image: shirtone, price: '$30.00' },
-    { name: 'Classic Blue T-Shirt with lines', image: shirttwo, price: '$27.00' },
-    { name: 'Classic Green T-Shirt with lines', image: shirtthree, price: '$27.00' },
-    { name: 'Classic Black T-Shirt', image: shirtfour, price: '$25.00' },
-    { name: 'Grey&Blue T-Shirt', image: shirtfive, price: '$34.00' }
+    { name: 'Classic Winter Sweater', image: sweaterone, price: '50,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Classic Blue T-Shirt', image: shirtone, price: '30,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Classic Blue T-Shirt with lines', image: shirttwo, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Classic Green T-Shirt with lines', image: shirtthree, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Classic Black T-Shirt', image: shirtfour, price: '25,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Grey&Blue T-Shirt', image: shirtfive, price: '34,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' }
   ];
 
-  // Создаем состояние для хранения текста поиска
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Функция обработки события изменения текста в поле поиска
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Фильтрация продуктов по тексту поиска
   const filteredProducts = upperClothingProducts.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -43,7 +39,6 @@ function UpperClothing() {
         </div>
       </div>
 
-      {/* Поле поиска */}
       <div className="container-fluid pt-2">
         <div className="container-fluid m-lg-2 d-flex justify-content-center">
           <div className="container-xl d-flex p-2 justify-content-between align-items-end">
@@ -58,24 +53,24 @@ function UpperClothing() {
         </div>
       </div>
 
-      {/* Карточки продуктов */}
+
       <div className="container">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">
           {filteredProducts.map((product, index) => (
             <div key={index} className="col border border-0 bg-transparent">
-              {/* Карточка продукта */}
+
               <Link
-                to={`/${encodeURIComponent(product.name.replace(/\s+/g, '').toLowerCase())}`}
+                to={`/template?productName=${encodeURIComponent(product.name)}&productPrice=${encodeURIComponent(product.price)}&productDescription=${encodeURIComponent(product.description)}&productImage=${encodeURIComponent(product.image)}`}
                 className="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
               >
                 <div className="card shadow-sm">
-                  {/* Изображение продукта */}
+
                   <img src={product.image} height="300" alt="img" />
                   <div className="card-body">
-                    {/* Название продукта */}
+
                     <p className="card-text d-flex justify-content-between align-items-center">{product.name}</p>
                     <div className="d-flex justify-content-between align-items-center">
-                      {/* Цена продукта */}
+
                       <small className="text-body-secondary">{product.price}</small>
                     </div>
                   </div>

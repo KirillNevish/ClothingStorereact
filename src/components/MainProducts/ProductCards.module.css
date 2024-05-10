@@ -1,6 +1,6 @@
 #buttonAllId {
     background-color: white;
-    transition: background-color 0.3s ease, border-radius 0.3s ease; /* Add transition property */
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 #buttonAllId:hover {

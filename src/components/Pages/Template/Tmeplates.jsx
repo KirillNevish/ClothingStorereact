@@ -1,23 +1,27 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import shirtone from '../../../MainProducts/images/upperclothing/204232947-t-shirt-icon-vector-image-suitable-for-mobile-apps-web-apps-and-print-media.jpg'
-import StarRating from '../../../Stars/StarRating';
-import style from './Templates.module.css'
-import Footer from '../../../DefaultFooter/Footer';
+import { useLocation } from 'react-router-dom';
 
-function ClassicBlueTShirt() {
 
-    const ProductName = 'Classic Blue T-Shirt';
-    const ProductPrice = '30,00';
-    const ProductDescription = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.';
+import StarRating from '../../Stars/StarRating';
+import style from './Tmeplates.module.css'
+import Footer from '../../DefaultFooter/Footer'
+
+
+function Tmeplates(props) {
+
+    const location = useLocation();
+  const [productName, setProductName] = useState('');
+  const [productPrice, setProductPrice] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productImage, setProductImage] = useState('');
 
     const [selectedButton, setSelectedButton] = useState(null);
     const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Retrieve cart items from localStorage
+
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         setCartItems(storedCartItems);
     }, []);
@@ -27,46 +31,60 @@ function ClassicBlueTShirt() {
     };
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const images = [shirtone];
+    const images = [productImage];
 
     const handleImageClick = () => {
         const nextIndex = (currentIndex + 1) % images.length;
         setCurrentIndex(nextIndex);
     };
 
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const name = searchParams.get('productName') || '';
+        const price = searchParams.get('productPrice') || '';
+        const description = searchParams.get('productDescription') || '';
+        const image = searchParams.get('productImage') || '';
+        setProductName(name);
+        setProductPrice(price);
+        setProductDescription(description);
+        setProductImage(image)
+      }, [location.search]);
+
     const handleAddToCart = () => {
-        // Check if the user is logged in
+
         const isLoggedIn = document.cookie.includes('AccsuccefullyLogined');
 
-        // If logged in, add the product to the cart
+
         if (isLoggedIn) {
-            const isInCart = cartItems.some(item => item.name === ProductName && item.selectedSize === selectedButton);
+            const isInCart = cartItems.some(item => item.name === productName && item.selectedSize === selectedButton);
             if (!isInCart) {
-                // Add the product to the cart if it's not already in the cart
+  
                 const productData = {
-                    name: ProductName,
-                    price: ProductPrice,
-                    description: ProductDescription,
-                    image: shirtone,
+                    name: productName,
+                    price: productPrice,
+                    description: productDescription,
+                    image: productImage,
                     selectedSize: selectedButton,
-                    pagePath: window.location.pathname
+
+                    fromUrl: window.location.href
                 };
                 const updatedCart = [...cartItems, productData];
                 setCartItems(updatedCart);
                 localStorage.setItem('cartItems', JSON.stringify(updatedCart));
             }
-            navigate('/cart'); // Redirect to the cart page
+            navigate('/cart');
         } else {
-            navigate('/signin'); // Redirect to the signin page
+            navigate('/signin');
         }
     };
 
     const handleRemoveFromCart = () => {
-        // Remove the product from the cart
-        const updatedCart = cartItems.filter(item => !(item.name === ProductName && item.selectedSize === selectedButton));
+
+        const updatedCart = cartItems.filter(item => !(item.name === productName && item.selectedSize === selectedButton));
         setCartItems(updatedCart);
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
     };
+
 
     return (
         <>
@@ -76,11 +94,11 @@ function ClassicBlueTShirt() {
                     <img src={images[currentIndex]} className="img-fluid" alt="img" />
                 </div>
                 <div className="pt-5 col-md-6 row row-cols-1 row-cols-sm-2 row-cols-md-1">
-                    <p className="fs-1 mx-2">{ProductName}</p>
+                    <p className="fs-1 mx-2">{productName}</p>
                     <div className="mx-2 pt-2 fs-5">
                         <StarRating />
                     </div>
-                    <p className="fs-4 pt-2 mx-2">{ProductPrice}</p>
+                    <p className="fs-4 pt-2 mx-2">{productPrice}</p>
                     <div className="w-100 pt-2" onClick={handleImageClick}>
                         <p className="fs-4 mx-2">Photos:</p>
                         <div style={{ display: 'flex' }}>
@@ -102,7 +120,7 @@ function ClassicBlueTShirt() {
                                 className={`fs-5 px-3 border rounded ${selectedButton === 1 ? 'text-bg-secondary' : ''}`}
                                 onClick={() => handleButtonClick(1)}
                             >
-                                1)S — 46-48
+                                1) S — 46-48
                             </button>
                             <button
                                 id={style.buttonAllId}
@@ -144,7 +162,7 @@ function ClassicBlueTShirt() {
                         </div>
                     </div>
                     <div className="w-100 pt-5 d-flex justify-content-center align-items-center">
-                        {cartItems.some(item => item.name === ProductName && item.selectedSize === selectedButton) ? (
+                        {cartItems.some(item => item.name === productName && item.selectedSize === selectedButton) ? (
                             <button type="button" className="btn btn-danger p-2 w-75 fs-5" onClick={handleRemoveFromCart}>
                                 Remove from Cart
                             </button>
@@ -156,14 +174,15 @@ function ClassicBlueTShirt() {
                     </div>
                     <div className="w-100 pt-5 align-items-center">
                         <p className="fs-4 mx-2">Description:</p>
-                        <p className="fs-5 mx-2 text-secondary">{ProductDescription}</p>
+                        <p className="fs-5 mx-2 text-secondary">{productDescription}</p>
                     </div>
                 </div>
             </div>
         </div>
         <Footer />
-    </>
+        </>
     );
 }
 
-export default ClassicBlueTShirt;
+export default Tmeplates;
+
