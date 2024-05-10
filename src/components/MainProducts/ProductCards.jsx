@@ -238,7 +238,7 @@ function ProductCards() {
                   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">
                       <button class="col border border-0 bg-transparent">
                           <Link
-                              to={`/template?productName=${encodeURIComponent(blackPinkSneakersProduct.name)}&productPrice=${encodeURIComponent(blackPinkSneakersProduct.price)}&productDescription=${encodeURIComponent(blackPinkSneakersProduct.description)}&productImage=${encodeURIComponent(blackPinkSneakersProduct.image)}`}
+                              to={`/template?productName=${encodeURIComponent(classicRedSneakersProduct.name)}&productPrice=${encodeURIComponent(classicRedSneakersProduct.price)}&productDescription=${encodeURIComponent(classicRedSneakersProduct.description)}&productImage=${encodeURIComponent(blackPinkSneakersProduct.image)}`}
                               class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                               <div class="card shadow-sm">
                                   <img src={blackPinkSneakersProduct.image} height="300" alt="img" />
