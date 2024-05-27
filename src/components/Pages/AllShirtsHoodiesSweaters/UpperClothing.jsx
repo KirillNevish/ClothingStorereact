@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import style from '../../MainProducts/ProductCards.module.css';
 import sweaterone from '../../MainProducts/images/upperclothing/123067427-knitted-brown-sweater-with-a-traditional-pattern-of-iceland-vector-illustration-on-white-background.jpg';
@@ -20,14 +20,38 @@ function UpperClothing() {
   ];
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  useEffect(() => {
+    const savedSortOrder = localStorage.getItem('sortOrder');
+    if (savedSortOrder) {
+      setSortOrder(savedSortOrder);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredProducts = upperClothingProducts.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleSortOrderChange = (e) => {
+    const newSortOrder = e.target.value;
+    setSortOrder(newSortOrder);
+    localStorage.setItem('sortOrder', newSortOrder);
+  };
+
+  const filteredProducts = upperClothingProducts
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      const priceA = parseFloat(a.price.replace(',', '.'));
+      const priceB = parseFloat(b.price.replace(',', '.'));
+      if (sortOrder === 'asc') {
+        return priceA - priceB;
+      } else {
+        return priceB - priceA;
+      }
+    });
 
   return (
     <>
@@ -49,6 +73,14 @@ function UpperClothing() {
               value={searchQuery}
               onChange={handleSearch}
             />
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
           </div>
         </div>
       </div>

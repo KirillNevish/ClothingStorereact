@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import style from '../../MainProducts/ProductCards.module.css';
 import shoeone from '../../MainProducts/images/shoes/122601137-red-sneaker-shoe-simple-vector-image.jpg';
@@ -20,18 +20,39 @@ function Shoes() {
     { name: 'Grey Long Sneakers', image: shoesix, price: '22,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' }
   ];
 
- 
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
 
+  useEffect(() => {
+    const savedSortOrder = localStorage.getItem('sortOrder');
+    if (savedSortOrder) {
+      setSortOrder(savedSortOrder);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  const handleSortOrderChange = (e) => {
+    const newSortOrder = e.target.value;
+    setSortOrder(newSortOrder);
+    localStorage.setItem('sortOrder', newSortOrder);
+  };
 
-  const filteredProducts = shoesProducts.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredProducts = shoesProducts
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      const priceA = parseFloat(a.price.replace(',', '.'));
+      const priceB = parseFloat(b.price.replace(',', '.'));
+      if (sortOrder === 'asc') {
+        return priceA - priceB;
+      } else {
+        return priceB - priceA;
+      }
+    });
 
   return (
     <>
@@ -43,7 +64,6 @@ function Shoes() {
         </div>
       </div>
 
-
       <div className="container-fluid pt-2">
         <div className="container-fluid m-lg-2 d-flex justify-content-center">
           <div className="container-xl d-flex p-2 justify-content-between align-items-end">
@@ -54,6 +74,14 @@ function Shoes() {
               value={searchQuery}
               onChange={handleSearch}
             />
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
           </div>
         </div>
       </div>

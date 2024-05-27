@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import style from '../../MainProducts/ProductCards.module.css';
 import jeansone from '../../MainProducts/images/lowerclothing/117837592-fashion-jeans-vector-design.jpg';
@@ -20,14 +20,38 @@ function PantsShorts(props) {
   ];
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  useEffect(() => {
+    const savedSortOrder = localStorage.getItem('sortOrder');
+    if (savedSortOrder) {
+      setSortOrder(savedSortOrder);
+    }
+  }, []);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredProducts = pantsShortsProducts.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleSortOrderChange = (e) => {
+    const newSortOrder = e.target.value;
+    setSortOrder(newSortOrder);
+    localStorage.setItem('sortOrder', newSortOrder); 
+  };
+
+  const filteredProducts = pantsShortsProducts
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      const priceA = parseFloat(a.price.replace(',', '.'));
+      const priceB = parseFloat(b.price.replace(',', '.'));
+      if (sortOrder === 'asc') {
+        return priceA - priceB;
+      } else {
+        return priceB - priceA;
+      }
+    });
 
   return (
     <>
@@ -49,28 +73,31 @@ function PantsShorts(props) {
               value={searchQuery}
               onChange={handleSearch}
             />
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
           </div>
         </div>
       </div>
 
-
       <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1 ">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-1">
           {filteredProducts.map((product, index) => (
             <div key={index} className="col border border-0 bg-transparent">
-
               <Link
                 to={`/template?productName=${encodeURIComponent(product.name)}&productPrice=${encodeURIComponent(product.price)}&productDescription=${encodeURIComponent(product.description)}&productImage=${encodeURIComponent(product.image)}`}
                 className="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
               >
                 <div className="card shadow-sm">
-
                   <img src={product.image} height="300" alt="img" />
                   <div className="card-body">
-
                     <p className="card-text d-flex justify-content-between align-items-center">{product.name}</p>
                     <div className="d-flex justify-content-between align-items-center">
-
                       <small className="text-body-secondary">{product.price}</small>
                     </div>
                   </div>
