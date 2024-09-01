@@ -8,6 +8,7 @@ import jeansthree from '../../MainProducts/images/lowerclothing/73974378-муж�
 import jeansfour from '../../MainProducts/images/lowerclothing/173790220-long-skinny-pants-color-variation-for-coloring-page-isolated-on-white-background.jpg';
 import jeansfive from '../../MainProducts/images/lowerclothing/176183903-illustration-denim-jeans-pants-front-view-jeans-vector-icon-cartoon-isolated-on-white-background.jpg';
 import jeanssix from '../../MainProducts/images/lowerclothing/107198275-jeans-icon-vector-isolated-on-white-background-for-your-web-and-mobile-app-design.jpg';
+import '../../../App.css';
 
 function PantsShorts(props) {
   const pantsShortsProducts = [
@@ -18,6 +19,7 @@ function PantsShorts(props) {
     { name: 'Classic Blue Pants', image: jeansfive, price: '40,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
     { name: 'Classic Black Jeans', image: jeanssix, price: '45,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' }
   ];
+
 
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
@@ -36,7 +38,7 @@ function PantsShorts(props) {
   const handleSortOrderChange = (e) => {
     const newSortOrder = e.target.value;
     setSortOrder(newSortOrder);
-    localStorage.setItem('sortOrder', newSortOrder); 
+    localStorage.setItem('sortOrder', newSortOrder);
   };
 
   const filteredProducts = pantsShortsProducts
@@ -55,17 +57,17 @@ function PantsShorts(props) {
 
   return (
     <>
-      <div class="container-fluid d-flex justify-content-center">
+      <div class="container-fluid d-flex justify-content-center mt-2">
         <div class="container-xl d-flex p-2 justify-content-between align-items-end">
           <button id={style.buttonAllId} class="fs-4 border border-0">
             <Link to="/" class="nav-link px-2 text-secondary">Back</Link>
           </button>
         </div>
-      </div> 
+      </div>
 
-      <div className="container-fluid pt-2">
-        <div className="container-fluid m-lg-2 d-flex justify-content-center">
-          <div className="container-xl d-flex p-2 justify-content-between align-items-end">
+      {/* <div className="container-fluid pt-2 ">
+        <div className="container-fluid m-lg-2 d-flex justify-content-center ">
+          <div className="container-xl d-flex pt-2 justify-content-evenly align-items-end">
             <input
               type="text"
               className={style.searchInput}
@@ -81,6 +83,27 @@ function PantsShorts(props) {
               <option value="asc">Price: Low to High</option>
               <option value="desc">Price: High to Low</option>
             </select>
+          </div>
+        </div>
+      </div> */}
+      <div className="container-fluid pt-2">
+        <div className="container-fluid m-lg-2 d-flex justify-content-center mb-2">
+          <div className="container-xl d-flex pt-2 justify-content-between align-items-end search-container">
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
           </div>
         </div>
       </div>

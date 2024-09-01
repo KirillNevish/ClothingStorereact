@@ -8,14 +8,15 @@ import shirttwo from '../../MainProducts/images/upperclothing/82096624-referee-t
 import shirtthree from '../../MainProducts/images/upperclothing/82096603-referee-tshirt-wear-icon-vector-illustration-graphic-design.jpg';
 import shirtfour from '../../MainProducts/images/upperclothing/84277740-рубашка-в-черный-простой-силуэт-стиль-иконки-векторной-иллюстрации-для-дизайна-и-сети-изолированных.jpg';
 import shirtfive from '../../MainProducts/images/upperclothing/205703589-fashionable-men-shirt-design-with-vector-icon.jpg';
+import '../../../App.css';
 
 function UpperClothing() {
   const upperClothingProducts = [
     { name: 'Classic Winter Sweater', image: sweaterone, price: '50,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
     { name: 'Classic Blue T-Shirt', image: shirtone, price: '30,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Blue T-Shirt with lines', image: shirttwo, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Green T-Shirt with lines', image: shirtthree, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Black T-Shirt', image: shirtfour, price: '25,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Blue T-Shirt with lines', image: shirttwo, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Green T-Shirt with lines', image: shirtthree, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Classic Black&White T-Shirt', image: shirtfour, price: '25,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
     { name: 'Grey&Blue T-Shirt', image: shirtfive, price: '34,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' }
   ];
 
@@ -55,7 +56,7 @@ function UpperClothing() {
 
   return (
     <>
-      <div className="container-fluid d-flex justify-content-center">
+      <div className="container-fluid d-flex justify-content-center mt-2">
         <div className="container-xl d-flex p-2 justify-content-between align-items-end">
           <button id={style.buttonAllId} className="fs-4 border border-0">
             <Link to="/" className="nav-link px-2 text-secondary">Back</Link>
@@ -63,7 +64,7 @@ function UpperClothing() {
         </div>
       </div>
 
-      <div className="container-fluid pt-2">
+      {/* <div className="container-fluid pt-2">
         <div className="container-fluid m-lg-2 d-flex justify-content-center">
           <div className="container-xl d-flex p-2 justify-content-between align-items-end">
             <input
@@ -81,6 +82,27 @@ function UpperClothing() {
               <option value="asc">Price: Low to High</option>
               <option value="desc">Price: High to Low</option>
             </select>
+          </div>
+        </div>
+      </div> */}
+      <div className="container-fluid pt-2">
+        <div className="container-fluid m-lg-2 d-flex justify-content-center mb-2">
+          <div className="container-xl d-flex pt-2 justify-content-between align-items-end search-container">
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
           </div>
         </div>
       </div>

@@ -1,13 +1,54 @@
-#headerId{
+#headerId {
     position: sticky;
-  top: 0;
-  z-index: 1;
+    top: 0;
+    z-index: 1;
 }
+
 #headerLiId {
     transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
 #headerLiId:hover {
-    background-color:  #343a40;
+    background-color: #343a40;
     border-radius: 6px;
+}
+
+#togglebutton {
+    border-radius: 0%;
+    border-color: transparent;
+    display: none;
+}
+
+#menusidebarbutton {
+    display: none;
+}
+
+#navigateheader {
+    display: block;
+}
+
+
+@media(max-width:768px) {
+    #menuicon {
+        width: 40px;
+        height: 40px;
+    }
+
+    #togglebutton {
+        display: block;
+        border-color: transparent;
+        background-color: transparent;
+    }
+
+    #menusidebarbutton {
+        display: block;
+    }
+
+    #sidebarwidth {
+        width: 75%;
+    }
+
+    #navigateheader {
+        display: none !important;
+    }
 }

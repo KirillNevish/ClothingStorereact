@@ -7,6 +7,7 @@ import shoethree from '../../MainProducts/images/shoes/207973165-colored-sneaker
 import shoefour from '../../MainProducts/images/shoes/206477197-cute-sneakers-sneakers-isolated-on-white-background-cartoon-shoes-vector-illustration.jpg';
 import shoefive from '../../MainProducts/images/shoes/206477206-cute-sneakers-sneakers-isolated-on-white-background-cartoon-shoes-vector-illustration.jpg';
 import shoesix from '../../MainProducts/images/shoes/134412647-male-shoe-icon-design-cloth-fashion-style-wear-shop-retail-and-store-theme-vector-illustration.jpg';
+import '../../../App.css';
 
 
 function Shoes() {
@@ -14,9 +15,9 @@ function Shoes() {
   const shoesProducts = [
     { name: 'Classic Red Sneakers', image: shoeone, price: '25,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
     { name: 'Black&Pink Sneakers', image: shoetwo, price: '20,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Blue&White Sneakers', image: shoethree, price: '20,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Brown&Yellow Sneakers', image: shoefour, price: '26,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
-    { name: 'Classic Blue&Yellow Sneakers', image: shoefive, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Blue&White Sneakers', image: shoethree, price: '20,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Brown&Yellow Sneakers', image: shoefour, price: '26,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
+    { name: 'Blue&Yellow Sneakers', image: shoefive, price: '27,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' },
     { name: 'Grey Long Sneakers', image: shoesix, price: '22,00', description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, eum. Id iusto libero est! Ullam tempora ipsa optio reiciendis veritatis harum nulla illo dolores accusamus, et ipsum, sapiente doloremque odio.' }
   ];
 
@@ -56,7 +57,7 @@ function Shoes() {
 
   return (
     <>
-      <div className="container-fluid d-flex justify-content-center">
+      <div className="container-fluid d-flex justify-content-center mt-2">
         <div className="container-xl d-flex p-2 justify-content-between align-items-end">
           <button id={style.buttonAllId} className="fs-4 border border-0">
             <Link to="/" className="nav-link px-2 text-secondary">Back</Link>
@@ -64,7 +65,7 @@ function Shoes() {
         </div>
       </div>
 
-      <div className="container-fluid pt-2">
+      {/* <div className="container-fluid pt-2">
         <div className="container-fluid m-lg-2 d-flex justify-content-center">
           <div className="container-xl d-flex p-2 justify-content-between align-items-end">
             <input
@@ -84,7 +85,29 @@ function Shoes() {
             </select>
           </div>
         </div>
+      </div> */}
+      <div className="container-fluid pt-2">
+        <div className="container-fluid m-lg-2 d-flex justify-content-center mb-2">
+          <div className="container-xl d-flex pt-2 justify-content-between align-items-end search-container">
+            <select
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className={style.sortSelect}
+            >
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+        </div>
       </div>
+
 
 
       <div className="container">
@@ -100,7 +123,7 @@ function Shoes() {
 
                   <img src={product.image} height="300" alt="img" />
                   <div className="card-body">
- 
+
                     <p className="card-text d-flex justify-content-between align-items-center">{product.name}</p>
                     <div className="d-flex justify-content-between align-items-center">
 
