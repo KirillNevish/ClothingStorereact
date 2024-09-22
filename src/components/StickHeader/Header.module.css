@@ -36,12 +36,18 @@
 
     #togglebutton {
         display: block;
-        border-color: transparent;
-        background-color: transparent;
+        border-radius: 6px;
+        /* border-color: transparent; */
+        /* background-color: transparent; */
     }
 
     #menusidebarbutton {
         display: block;
+    }
+
+    #maincontainer {
+        display: flex;
+        justify-content: space-between !important;
     }
 
     #sidebarwidth {

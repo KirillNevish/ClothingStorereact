@@ -52,8 +52,8 @@ function Header() {
     return (
         <>
             <header id={style.headerId} className="p-3 text-bg-dark">
-                <div className="container">
-                    <Button id={style.togglebutton} onClick={handleShow}>
+                <div className="container" id={style.maincontainer}>
+                    <button id={style.togglebutton} type="button" className="btn btn-dark" onClick={handleShow}>
                         <div id={style.menusidebarbutton} className="text-white">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,12 @@ function Header() {
                                 />
                             </svg>
                         </div>
-                    </Button>
+                    </button>
+                    <button type="button" id={style.menusidebarbutton} className="btn btn-dark px-3" onClick={handleCartClick}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" className="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"></path>
+                        </svg>
+                    </button>
 
                     <Offcanvas show={show} onHide={handleClose} id={style.sidebarwidth} >
                         <Offcanvas.Header closeButton>
@@ -97,12 +102,12 @@ function Header() {
                             </ul>
                             <hr />
                             <div className="d-flex justify-content-between">
-                                <button type="button" className="btn btn-outline-none d-flex" onClick={handleCartClick}>
+                                {/* <button type="button" className="btn btn-outline-none d-flex" onClick={handleCartClick}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" className="bi bi-cart4" viewBox="0 0 16 16">
                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"></path>
                                     </svg>
                                     <p className="mx-2 fs-5">Cart</p>
-                                </button>
+                                </button> */}
                                 <div className="text-end">
                                     {isLoggedIn ? (
                                         <button type="button" className="btn btn-warning" onClick={handleLogout}>

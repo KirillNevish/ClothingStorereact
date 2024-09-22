@@ -56,7 +56,7 @@ function Shoes() {
     });
 
   return (
-    <>
+    <div className="pb-5">
       <div className="container-fluid d-flex justify-content-center mt-2">
         <div className="container-xl d-flex p-2 justify-content-between align-items-end">
           <button id={style.buttonAllId} className="fs-4 border border-0">
@@ -65,27 +65,7 @@ function Shoes() {
         </div>
       </div>
 
-      {/* <div className="container-fluid pt-2">
-        <div className="container-fluid m-lg-2 d-flex justify-content-center">
-          <div className="container-xl d-flex p-2 justify-content-between align-items-end">
-            <input
-              type="text"
-              className={style.searchInput}
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={handleSearch}
-            />
-            <select
-              value={sortOrder}
-              onChange={handleSortOrderChange}
-              className={style.sortSelect}
-            >
-              <option value="asc">Price: Low to High</option>
-              <option value="desc">Price: High to Low</option>
-            </select>
-          </div>
-        </div>
-      </div> */}
+
       <div className="container-fluid pt-2">
         <div className="container-fluid m-lg-2 d-flex justify-content-center mb-2">
           <div className="container-xl d-flex pt-2 justify-content-between align-items-end search-container">
@@ -136,7 +116,7 @@ function Shoes() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

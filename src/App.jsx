@@ -23,7 +23,6 @@ import CheckoutPage from './components/Pages/Checkout/CheckoutPage';
 import { Route, Routes } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Header from './components/StickHeader/Header';
 
 
