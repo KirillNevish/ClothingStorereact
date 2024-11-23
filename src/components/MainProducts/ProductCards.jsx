@@ -128,7 +128,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon575} class="col border border-0 bg-transparent ">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(blueTSProduct.name)}&productPrice=${encodeURIComponent(blueTSProduct.price)}&productDescription=${encodeURIComponent(blueTSProduct.description)}&productImage=${encodeURIComponent(blueTSProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -143,7 +143,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon767} class="col border border-0 bg-transparent">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(blueTSWithLinesProduct.name)}&productPrice=${encodeURIComponent(blueTSWithLinesProduct.price)}&productDescription=${encodeURIComponent(blueTSWithLinesProduct.description)}&productImage=${encodeURIComponent(blueTSWithLinesProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -190,7 +190,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon575} class="col border border-0 bg-transparent">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(blueLongShortsProduct.name)}&productPrice=${encodeURIComponent(blueLongShortsProduct.price)}&productDescription=${encodeURIComponent(blueLongShortsProduct.description)}&productImage=${encodeURIComponent(blueLongShortsProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -205,7 +205,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon767} class="col border border-0 bg-transparent">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(classicBrownJeansProduct.name)}&productPrice=${encodeURIComponent(classicBrownJeansProduct.price)}&productDescription=${encodeURIComponent(classicBrownJeansProduct.description)}&productImage=${encodeURIComponent(classicBrownJeansProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -251,7 +251,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon575} class="col border border-0 bg-transparent">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(blackPinkSneakersProduct.name)}&productPrice=${encodeURIComponent(blackPinkSneakersProduct.price)}&productDescription=${encodeURIComponent(blackPinkSneakersProduct.description)}&productImage=${encodeURIComponent(BlueWhiteSneakersProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -266,7 +266,7 @@ function ProductCards() {
                                 </div>
                             </Link>
                         </button>
-                        <button class="col border border-0 bg-transparent">
+                        <button id={style.hideon767} class="col border border-0 bg-transparent">
                             <Link
                                 to={`/template?productName=${encodeURIComponent(BlueWhiteSneakersProduct.name)}&productPrice=${encodeURIComponent(BlueWhiteSneakersProduct.price)}&productDescription=${encodeURIComponent(BlueWhiteSneakersProduct.description)}&productImage=${encodeURIComponent(classicRedSneakersProduct.image)}`}
                                 class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">

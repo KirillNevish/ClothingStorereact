@@ -7,3 +7,15 @@
     background-color: #e2e3e5;
     border-radius: 6px;
 }
+
+@media (max-width: 767px) {
+    #hideon767 {
+        display: none !important;
+    }
+}
+
+@media (max-width: 575px) {
+    #hideon575 {
+        display: none !important;
+    }
+}
