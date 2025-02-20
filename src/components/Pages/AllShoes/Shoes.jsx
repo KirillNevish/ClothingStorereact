@@ -22,7 +22,7 @@ function Shoes() {
   ];
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState('none');
 
   useEffect(() => {
     const savedSortOrder = localStorage.getItem('sortOrder');
@@ -45,15 +45,13 @@ function Shoes() {
     .filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    .sort((a, b) => {
+  if (sortOrder !== 'none') {
+    filteredProducts.sort((a, b) => {
       const priceA = parseFloat(a.price.replace(',', '.'));
       const priceB = parseFloat(b.price.replace(',', '.'));
-      if (sortOrder === 'asc') {
-        return priceA - priceB;
-      } else {
-        return priceB - priceA;
-      }
+      return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
     });
+  };
 
   return (
     <div className="pb-5">
@@ -74,6 +72,7 @@ function Shoes() {
               onChange={handleSortOrderChange}
               className={style.sortSelect}
             >
+              <option value="none">No Sorting</option>
               <option value="asc">Price: Low to High</option>
               <option value="desc">Price: High to Low</option>
             </select>

@@ -29,8 +29,8 @@ function SignInPage() {
       return;
     }
 
-    const ThisAcc = { email, password }; 
-    localStorage.setItem('ThisAcc', JSON.stringify(ThisAcc)); 
+    const ThisAcc = { email, password };
+    localStorage.setItem('ThisAcc', JSON.stringify(ThisAcc));
 
 
     const date = new Date();
@@ -49,7 +49,7 @@ function SignInPage() {
   }
 
   return (
-    <div className="modal modal-sheet position-static d-block bg-body-white p-4 py-md-5" tabIndex="-1" role="dialog" id="modalSignin">
+    <div className="modal modal-sheet position-static d-block bg-body-white pt-4 pb-4 py-md-5" tabIndex="-1" role="dialog" id="modalSignin">
       <div className="modal-dialog" role="document">
         <div className="modal-content rounded-4 shadow">
           <div className="modal-header p-5 pb-4 border-bottom-0">
